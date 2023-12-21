@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-const Tasklist = ({ task, onDelete, complete }) => {
+const Tasklist = ({ task, onDelete, complete , id}) => {
   // create a hook to change targetted
   const [dateCreated, setStartDate] = useState(new Date(task.dateCreated));
   const [reminderDate, setEndDate] = useState(new Date(task.reminderDate));
   return (
     <div className="flex items-center justify-center ">
       <div className="bg-white mt-2 mx-2 border rounded py-1 px-2 w-80">
-        <h1 className={task.completed? "line-through" : " "}>
+        <h1 className={task.completed? "line-through" : " underline "}>
           <input type="checkbox" defaultChecked={task.completed} onClick={() => {
-            complete(task.id);
+            complete(id);
           }} /> {task.title}
         </h1>
         <span className="flex items-center justify-between text-xs ml-4 ">
@@ -19,7 +19,7 @@ const Tasklist = ({ task, onDelete, complete }) => {
       </div>
       <button
         onClick={() => {
-          onDelete(task.id);
+          onDelete(id);
         }}
       >
         <svg
